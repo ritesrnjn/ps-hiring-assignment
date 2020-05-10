@@ -48,7 +48,7 @@ function News(props) {
   return (
     <div>
       <table className="table table-striped">
-        <thead>
+        <thead style={{background: 'orange'}}>
           <tr>
             <th scope="col">Comments</th>
             <th scope="col">Vote Count</th>
@@ -63,6 +63,8 @@ function News(props) {
               <td>{r.points}</td>
               <td>
                 <TriangleIcon
+                    height={15}
+                    width={15}
                   onClick={handleUpvote(r.objectID)}
                   style={{ cursor: 'pointer' }}
                 />

@@ -7,3 +7,7 @@
 .navItem {
     cursor: pointer
 }
+
+.table td {
+    padding: 0
+}
