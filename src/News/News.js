@@ -62,11 +62,19 @@ function News(props) {
               <td>{r.num_comments}</td>
               <td>{r.points}</td>
               <td>
-                <TriangleIcon onClick={handleUpvote(r.objectID)} style={{cursor: 'pointer'}}/>
+                <TriangleIcon
+                  onClick={handleUpvote(r.objectID)}
+                  style={{ cursor: 'pointer' }}
+                />
               </td>
               <td>
                 {r.title}
-                <span onClick={handleHideClick(r.objectID)} style={{cursor: 'pointer'}}>[Hide]</span>
+                <span
+                  onClick={handleHideClick(r.objectID)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  [Hide]
+                </span>
               </td>
             </tr>
           ))}

@@ -4,12 +4,10 @@ import {
   UPVOTE_ARTICLE
 } from '../actions/article'
 
-function initializeState(){
-
+function initializeState() {
   let hidden = localStorage.getItem('hidden')
 
-  console.log(hidden)
-  if(hidden){
+  if (hidden) {
     hidden = hidden.split(',')
     hidden = new Set([...hidden])
   }
@@ -32,12 +30,11 @@ export default (state = initialState, action) => {
       // filter hidden
       let hits = action.response.hits.filter(o => !state.hidden.has(o.objectID))
       // Add upvotes
-      hits = hits.map(h=>{
-        if(state.upvotes[h.objectID]){
+      hits = hits.map(h => {
+        if (state.upvotes[h.objectID]) {
           h.points = state.upvotes[h.objectID]
         }
         return h
-
       })
       return {
         ...state,
@@ -55,19 +52,19 @@ export default (state = initialState, action) => {
       }
 
     case UPVOTE_ARTICLE:
-      let points = state.hits.find(o=> o.objectID===action.articleId).points
-      let hitsArt = state.hits.map(o=>{
-          if(o.objectID===action.articleId){
-            o.points = points+1
-          }
-          return o
-        })
-        const upvotes = {
-          ...state.upvotes,
-          [action.articleId]: points + 1,
+      const { points } = state.hits.find(o => o.objectID === action.articleId)
+      const hitsArt = state.hits.map(o => {
+        if (o.objectID === action.articleId) {
+          o.points = points + 1
         }
+        return o
+      })
+      const upvotes = {
+        ...state.upvotes,
+        [action.articleId]: points + 1
+      }
 
-        localStorage.setItem('upvotes', JSON.stringify(upvotes))
+      localStorage.setItem('upvotes', JSON.stringify(upvotes))
       return {
         ...state,
         hits: hitsArt,

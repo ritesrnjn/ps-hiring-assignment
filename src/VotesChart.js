@@ -1,24 +1,11 @@
 import React, { PureComponent } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
 
-const votes = [
-  {
-    name: 'Articles',
-    data: [
-      { articleId: 'A', value: Math.random() },
-      { articleId: 'B', value: Math.random() },
-      { articleId: 'C', value: Math.random() },
-      { articleId: 'D', value: Math.random() },
-      { articleId: 'E', value: Math.random() },
-      { articleId: 'F', value: Math.random() },
-      { articleId: 'G', value: Math.random() },
-      { articleId: 'H', value: Math.random() }
-    ]
-  }
-]
-
 export default class VotesChart extends PureComponent {
   render() {
+    const { votes } = this.props
+
+    console.log(votes)
     return (
       <LineChart width={900} height={300}>
         <CartesianGrid strokeDasharray="3 3" />

@@ -1,8 +1,27 @@
 import React from 'react'
-import LineChart from './Recharts'
+import { connect } from 'react-redux'
+import VotesChart from './VotesChart'
 
-function Chart() {
-  return <LineChart />
+function Chart(props) {
+  const { hits } = props
+
+  const votes2 = [
+    {
+      name: 'Articles',
+      data: hits.map(h => {
+        return {
+          articleId: h.objectID,
+          value: h.points
+        }
+      })
+    }
+  ]
+
+  return <VotesChart votes={votes2} />
 }
 
-export default Chart
+const mapStateToProps = state => ({
+  hits: state.article.hits
+})
+
+export default connect(mapStateToProps, {})(Chart)
