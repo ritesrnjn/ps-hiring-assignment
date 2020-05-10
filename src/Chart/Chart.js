@@ -5,7 +5,7 @@ import VotesChart from './VotesChart'
 function Chart(props) {
   const { hits } = props
 
-  const votes2 = [
+  const votes = [
     {
       name: 'Articles',
       data: hits.map(h => {
@@ -17,7 +17,7 @@ function Chart(props) {
     }
   ]
 
-  return <VotesChart votes={votes2} />
+  return <VotesChart votes={votes} />
 }
 
 const mapStateToProps = state => ({

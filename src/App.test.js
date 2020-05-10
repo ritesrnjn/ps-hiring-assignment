@@ -1,9 +1,21 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import App from './App'
+import Chart from './Chart/VotesChart'
+import {setItem, getItem} from './storageUtil'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />)
-  const linkElement = getByText(/learn react/i)
-  expect(linkElement).toBeInTheDocument()
+const votes = [
+  {
+    name: 'Articles',
+    data: []
+  }
+]
+
+test('Chart renders!', async () => {
+  const { container } = render(<Chart votes={votes}/>)
+  expect(container.firstChild).toHaveClass('recharts-wrapper')
+})
+
+test('Persistence storage works!', async () =>{
+  setItem('name', 'Ritesh')
+  expect(getItem('name')).toBe('Ritesh');
 })

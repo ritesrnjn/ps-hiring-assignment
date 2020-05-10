@@ -1,6 +1,4 @@
 import React from 'react'
-import './App.css'
-
 import News from './News'
 import Chart from './Chart'
 
