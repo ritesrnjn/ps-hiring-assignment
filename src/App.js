@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
+import Home from './Home'
 
-import News from './News'
-import Chart from "./Chart";
+import { Route, Switch, } from 'react-router-dom';
 
-function App() {
-  return (
-        <div className="container-fluid">
-        <div className="row">
-            <div className="col-12">
-      <News/>
-
-      <Chart/>
-            </div>
-        </div>
-        </div>
-  );
+function App(props) {
+    return (
+            <Switch>
+                <Route
+                    path="/"
+                    render={props => <Home {...props} />}
+                />
+            </Switch>
+    );
 }
 
 export default App;

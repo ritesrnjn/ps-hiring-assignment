@@ -3,3 +3,7 @@
     justify-content: flex-end;
     color: orange;
 }
+
+.navItem {
+    cursor: pointer
+}

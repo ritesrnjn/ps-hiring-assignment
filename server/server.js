@@ -4,6 +4,7 @@ import fs from 'fs'
 import express from 'express'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from "react-router-dom";
 
 import App from '../src/App'
 
@@ -18,10 +19,18 @@ const serverRenderer = (req, res, next) => {
             console.error(err)
             return res.status(500).send('An error occurred')
         }
+        let context={}
         return res.send(
             data.replace(
                 '<div id="root"></div>',
-                `<div id="root">${ReactDOMServer.renderToString(<App />)}</div>`
+                `<div id="root">${ReactDOMServer.renderToString(
+                    <StaticRouter
+                        location={req.url}
+                        context={context}
+                    >
+                    <App />
+                    </StaticRouter>
+                    )}</div>`
             )
         )
     })

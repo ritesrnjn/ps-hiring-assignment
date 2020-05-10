@@ -1,30 +1,60 @@
-import React from "react";
+import React, {useState} from "react";
 import TriangleIcon from "./TriangleIcon";
 import './news.css'
 
-function News() {
-    const [newsArticles, setNewsArticles] =React.useState([])
+function News(props) {
+    const {history}= props
+    let params = new URLSearchParams(history.location.search);
+    let pageNo = params.get("page")||1
 
-    const prevClick = () =>{
+    const [page, setPage] = useState(pageNo)
+    const [newsArticles, setNewsArticles] = useState([])
 
-    }
-    const nextClick = () => {
-
-    }
-
+    // on mount
     React.useEffect(() => {
-        fetch('https://hn.algolia.com/api/v1/search?page=2')
+        fetchArticles(page)
+    }, [])
+
+    const fetchArticles = page => {
+        const url = `https://hn.algolia.com/api/v1/search?page=${page}`
+        fetch(url)
             .then(res => res.json())
             .then(res => {
+                    console.log('res', res)
                     setNewsArticles(res.hits)
+
                 },
                 error => {
                     // setLoaded(true)
                     console.log(error)
                 }
             )
-    }, [])
+    }
 
+
+
+    const prevClick = () =>{
+        console.log('nextClick', page)
+        let pageNo = parseInt(page)
+        if(pageNo >1){
+            pageNo = pageNo -1
+            setPage(pageNo)
+            fetchArticles(pageNo)
+            const url = `/?page=${pageNo}`
+            history.push(url)
+        }
+
+    }
+    const nextClick = () => {
+
+        let pageNo = parseInt(page)
+        pageNo = pageNo +1
+        console.log('nextClick', pageNo)
+        setPage(pageNo)
+        fetchArticles(pageNo)
+        const url = `/?page=${pageNo}`
+        history.push(url)
+    }
 
 
     return (
@@ -51,7 +81,9 @@ function News() {
             </table>
 
             <div className="paginateRoot">
-                <span onClick={prevClick}>Previous</span> &nbsp;| &nbsp;<span onClick={nextClick}>Next</span>
+                <span className="navItem" onClick={prevClick}>Previous</span>
+                &nbsp;| &nbsp;
+                <span className="navItem" onClick={nextClick}>Next</span>
             </div>
         </div>
     )
