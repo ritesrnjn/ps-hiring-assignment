@@ -1,13 +1,20 @@
 import React from 'react'
 import './App.css'
 import { Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import Home from './Home'
+
+import configureStore from './redux/initRedux'
+
+export const store = configureStore()
 
 function App(props) {
   return (
-    <Switch>
-      <Route path="/" render={props => <Home {...props} />} />
-    </Switch>
+    <Provider store={store}>
+      <Switch>
+        <Route path="/" render={props => <Home {...props} />} />
+      </Switch>
+    </Provider>
   )
 }
 

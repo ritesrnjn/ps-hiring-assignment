@@ -4,14 +4,16 @@ import {
   UPVOTE_ARTICLE
 } from '../actions/article'
 
+import { setItem, getItem } from '../../storageUtil'
+
 function initializeState() {
-  let hidden = localStorage.getItem('hidden')
+  let hidden = getItem('hidden')
 
   if (hidden) {
     hidden = hidden.split(',')
     hidden = new Set([...hidden])
   }
-  let upvotes = localStorage.getItem('upvotes')
+  let upvotes = getItem('upvotes')
   upvotes = upvotes ? JSON.parse(upvotes) : {}
 
   return {
@@ -43,7 +45,7 @@ export default (state = initialState, action) => {
 
     case HIDE_ARTICLE:
       state.hidden.add(action.articleId)
-      localStorage.setItem('hidden', [...state.hidden])
+      setItem('hidden', [...state.hidden])
 
       return {
         ...state,
@@ -64,7 +66,7 @@ export default (state = initialState, action) => {
         [action.articleId]: points + 1
       }
 
-      localStorage.setItem('upvotes', JSON.stringify(upvotes))
+      setItem('upvotes', JSON.stringify(upvotes))
       return {
         ...state,
         hits: hitsArt,
