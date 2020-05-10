@@ -43,7 +43,7 @@ function News(props) {
   }
 
   const handleUpvote = articleId => () => upvoteArticle(articleId)
-
+  const handleHideClick = articleId => () => hideArticle(articleId)
   return (
     <div>
       <table className="table table-striped">
@@ -63,7 +63,9 @@ function News(props) {
               <td>
                 <TriangleIcon onClick={handleUpvote(r.objectID)}/>
               </td>
-              <td>{r.title}</td>
+              <td>{r.title}
+              <span onClick={handleHideClick(r.objectID)}>[Hide]</span>
+              </td>
             </tr>
           ))}
         </tbody>

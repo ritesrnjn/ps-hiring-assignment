@@ -20,21 +20,21 @@ export default (state = initialState, action) => {
       }
 
     case HIDE_ARTICLE:
-      const hidden = state.hidden.add(action.articleId)
+      state.hidden.add(action.articleId)
+
       return {
         ...state,
-        hidden
+        hits: state.hits.filter(o=>o.objectID !== action.articleId),
+        hidden: state.hidden
       }
 
     case UPVOTE_ARTICLE:
-      let votes = (state.upvotes[action.articleId] ||0) +1
-      const upvotes = {
-        ...state.upvotes,
-        [action.articleId]: votes
-      }
       return {
         ...state,
-        upvotes
+        upvotes: {
+          ...state.upvotes,
+          [action.articleId]: (state.upvotes[action.articleId] ||0) +1
+        }
       }
 
     default:
