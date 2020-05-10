@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        hits: state.hits.filter(o=>o.objectID !== action.articleId),
+        hits: state.hits.filter(o => o.objectID !== action.articleId),
         hidden: state.hidden
       }
 
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
         ...state,
         upvotes: {
           ...state.upvotes,
-          [action.articleId]: (state.upvotes[action.articleId] ||0) +1
+          [action.articleId]: (state.upvotes[action.articleId] || 0) + 1
         }
       }
 
