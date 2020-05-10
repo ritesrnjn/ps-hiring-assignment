@@ -1,18 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { Route, Switch } from 'react-router-dom'
 import Home from './Home'
 
-import { Route, Switch, } from 'react-router-dom';
-
 function App(props) {
-    return (
-            <Switch>
-                <Route
-                    path="/"
-                    render={props => <Home {...props} />}
-                />
-            </Switch>
-    );
+  return (
+    <Switch>
+      <Route path="/" render={props => <Home {...props} />} />
+    </Switch>
+  )
 }
 
-export default App;
+export default App
