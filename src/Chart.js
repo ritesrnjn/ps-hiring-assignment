@@ -1,7 +1,10 @@
 import React from "react";
+import LineChart from './Recharts'
 
 function Chart() {
-    return (<h1>Chart</h1>)
+    return (
+        <LineChart/>
+    )
 }
 
 export default Chart

@@ -15,9 +15,8 @@ function News() {
     React.useEffect(() => {
         fetch('https://hn.algolia.com/api/v1/search?page=2')
             .then(res => res.json())
-            .then(
-                result => {
-                    setNewsArticles(result.hits)
+            .then(res => {
+                    setNewsArticles(res.hits)
                 },
                 error => {
                     // setLoaded(true)
