@@ -44,6 +44,7 @@ function News(props) {
 
   const handleUpvote = articleId => () => upvoteArticle(articleId)
   const handleHideClick = articleId => () => hideArticle(articleId)
+
   return (
     <div>
       <table className="table table-striped">
@@ -61,11 +62,11 @@ function News(props) {
               <td>{r.num_comments}</td>
               <td>{r.points}</td>
               <td>
-                <TriangleIcon onClick={handleUpvote(r.objectID)} />
+                <TriangleIcon onClick={handleUpvote(r.objectID)} style={{cursor: 'pointer'}}/>
               </td>
               <td>
                 {r.title}
-                <span onClick={handleHideClick(r.objectID)}>[Hide]</span>
+                <span onClick={handleHideClick(r.objectID)} style={{cursor: 'pointer'}}>[Hide]</span>
               </td>
             </tr>
           ))}
