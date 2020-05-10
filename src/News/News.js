@@ -42,6 +42,8 @@ function News(props) {
     history.push(url)
   }
 
+  const handleUpvote = articleId => () => upvoteArticle(articleId)
+
   return (
     <div>
       <table className="table table-striped">
@@ -59,7 +61,7 @@ function News(props) {
               <td>{r.num_comments}</td>
               <td>{r.points}</td>
               <td>
-                <TriangleIcon />
+                <TriangleIcon onClick={handleUpvote(r.objectID)}/>
               </td>
               <td>{r.title}</td>
             </tr>

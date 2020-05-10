@@ -20,14 +20,21 @@ export default (state = initialState, action) => {
       }
 
     case HIDE_ARTICLE:
-      // Get article list---> set hidden to true
+      const hidden = state.hidden.add(action.articleId)
       return {
-        ...state
+        ...state,
+        hidden
       }
+
     case UPVOTE_ARTICLE:
-      // + to upvotes
+      let votes = (state.upvotes[action.articleId] ||0) +1
+      const upvotes = {
+        ...state.upvotes,
+        [action.articleId]: votes
+      }
       return {
-        ...state
+        ...state,
+        upvotes
       }
 
     default:
