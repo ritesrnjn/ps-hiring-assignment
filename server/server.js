@@ -8,7 +8,7 @@ import { StaticRouter } from "react-router-dom";
 
 import App from '../src/App'
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 const app = express()
 
 const router = express.Router()

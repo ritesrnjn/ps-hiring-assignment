@@ -41,7 +41,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/ --fix"
+    "lint": "eslint src/ --fix",
+    "postinstall": "react-scripts build"
+  },
+  "engines": {
+    "node": "^12"
   },
   "eslintConfig": {
     "extends": "react-app"
