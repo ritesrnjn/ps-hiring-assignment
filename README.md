@@ -1,11 +1,15 @@
 ## PS Hiring Assignment
 
-### Available Scripts
+### Scripts
 
 -   Run app in dev mode with CSR
 
     `yarn start`
 
+-  Run Tests
+
+    `yarn test`
+    
 -  Build App
 
     `yarn build`
@@ -13,6 +17,10 @@
 -  Start app with SSR 
 
     `yarn server`
+    
+-   Deploy Changes
+
+    `git push origin master`
 
 
 
@@ -21,12 +29,14 @@
 -   React 16 
 -   Redux
 -   Express
--   Boostrap 4
+-   Bootstrap 4
 
 
 ### Deployment
     
-This application is deployed on heroku at following url:
+This application has CI pipeline setup through Travis. 
 
-`https://ps-hiring-assignment.herokuapp.com/`
+It is automatically deployed on heroku when changes are pushed to master.
+
+url: `https://ps-hiring-assignment.herokuapp.com/`
  
