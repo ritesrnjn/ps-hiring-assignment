@@ -1,0 +1,37 @@
+XT Coding Assignment
+
+Context: Hacker News is a community started by Paul Graham for sharing "Anything that good hackers would find interesting. That includes more than hacking and startups. If you had to reduce it to a sentence, the answer might be: anything that gratifies one's intellectual curiosity."  link: https://news.ycombinator.com/
+
+Problem statement
+Create a hacker news clone using React with Server Side Rendering and hydration..
+
+Scope: “Front Page” feed with line chart.
+
+Functionalities
+1.	Desktop design is provided below. Make it responsive for tablet and mobile. Apply your thoughts on what’d be the best user experience for the respective devices
+2.	Upvote (maintain upvotes using in-browser storage APIs – no service integration, but keep the functionality such that it can be replaced with an service with minimal code change). You can add as many upvotes as you wish.
+3.	Hide functionality to remove the news from user’s view.
+4.	Prev | Next link should get the relevant data and all paginated URL's should be bookmarkable.
+5.	Plot the timeline with the News ID as the x axis and votes on the Y axis. This will match the data in the details table above it. 
+6.	The timeline chart should update real time as and when the upvote is clicked.
+7.	ALL MODIFIED DATA like hide and Upvotes – should be persisted and should not reset on browser refresh.
+-	Avoid using frameworks like NextJs for SSR & build your server side rendering setup on top of Create React App only
+-	Elaborate your approach and stack details in the Readme file.
+
+The Ask
+1.	Match the design for desktop using the screenshot provided. Make it responsive.
+2.	Write a couple of Unit tests for us.
+3.	API service details provided below - use the same for fetch/pagination etc.
+4.	Follow all the instructions for assignment completion below
+5.	Incorporate all performance best practices and demonstrate a high Lighthouse score for
+6.	Performance, SEO and Accessibility (bonus points if PWA scores are also high)
+
+Submission
+1.	Create a git hub project within your account & push commits for each milestone of your work.
+2.	Setup a CI pipeline with a CI tool of your choice Circle CI, Travis, Jenkins etc
+3.	Deploy your app to Heroku or a hosting provider of your choice.
+4.	API service: https://hn.algolia.com/api
+4.1.	All use cases can be handled by this API. Go through API doc thoroughly.
+5.	Send us the link to the deployed URL of the app and the Github Repo
+
+UI design is present in the parent folder. filename: news_feed.jpg
